@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        position: relative;
+      }
+      .body {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 100%;
+        z-index: 3;
+        overflow-y: scroll;
+        transition: all 0.8s ease;
+      }
+      .home {
+        height: 100%;
+        background-color: red;
+        z-index: 1;
+      }
+      .main {
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        z-index: 3;
+      }
+      .main2 {
+        width: 100%;
+        height: 100%;
+        background-color: blue;
+        z-index: 3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="home"></div>
+    <header class="body">
+      <div class="main"></div>
+      <div class="main2"></div>
+    </header>
+
+    <script>
+      document.querySelector(".home").onmousewheel = function (event) {
+        console.log("home scroll");
+        if (event.deltaY > 0) {
+          document.querySelector(".body").style.top = "0";
+        }
+      };
+      document.querySelector(".body").onmousewheel = function (event) {
+        if (this.scrollTop == 0 && event.deltaY < 0) {
+          document.querySelector(".body").style.top = "100%";
+        }
+      };
+    </script>
+  </body>
+</html>
